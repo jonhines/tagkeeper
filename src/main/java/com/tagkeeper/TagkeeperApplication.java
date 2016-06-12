@@ -41,6 +41,13 @@ public class TagkeeperApplication implements CommandLineRunner
     public void run(String... args) throws Exception
     {
 
+        Player existingPlayer = playerRepository.findByFirstName("Squintz");
+        if(existingPlayer != null)
+        {
+            // do nothing, the DB has been populated, no need to overwrite
+            return;
+        }
+
         playerRepository.deleteAll();
 
         /**
